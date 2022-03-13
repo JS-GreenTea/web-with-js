@@ -13,7 +13,7 @@ reduce 함수
  */
 
 Array.prototype.customReduce = function (callback, initialValue = 0) {
-  let array = this.Array;
+  let array = this;
 
   if (isReturnSingleValueCondition(array, arguments.length)) return array[0];
 

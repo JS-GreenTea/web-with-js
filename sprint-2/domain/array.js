@@ -13,12 +13,38 @@ reduce 함수
  */
 
 Array.prototype.customReduce = function (callback, initialValue = 0) {
-  let accumulator = 0;
-  let currentIndex = initialValue === 0 ? 1 : 0;
   let array = this.Array;
-  let currentValue = initialValue;
-  callback(accumulator, currentValue, currentIndex, array);
-  return 0;
+
+  let { accumulator, currentValue, currentIndex } = initializeByHasInitialValue(
+    arguments.length,
+    initialValue,
+    arr
+  );
+
+  // initialValue 제공
 };
 
+function initializeByHasInitialValue(argsLength, initialValue, arr) {
+  let accumulator;
+  let currentValue;
+  let currentIndex;
+
+  if (argsLength === 2) {
+    accumulator = initialValue;
+    currentValue = arr[0];
+    currentIndex = 0;
+  }
+  // initialValue 미제공
+  else if (argsLength === 1) {
+    accumulator = arr[0];
+    currentValue = arr[0];
+    currentIndex = 1;
+  }
+
+  return { accumulator, currentValue, currentIndex };
+}
+
+function isArrayHasOneElement(arr) {
+  return arr.length === 1;
+}
 module.exports = Array;

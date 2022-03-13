@@ -25,7 +25,9 @@ class Commander {
     return this.operateElements.map((e) => Number(e));
   }
 
-  count() {}
+  count(acc, cur) {
+    if (cur !== undefined) return acc + 1;
+  }
   add(acc, cur) {
     return acc + cur;
   }

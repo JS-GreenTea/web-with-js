@@ -1,5 +1,10 @@
 class Log {
-  constructor() {}
+  constructor(result) {
+    this.result = result;
+  }
+  print() {
+    console.log(this.result);
+  }
 }
 
-module.exports = TimeConverter;
+module.exports = Log;

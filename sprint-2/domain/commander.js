@@ -25,6 +25,9 @@ class Commander {
     return this.operateElements.map((e) => Number(e));
   }
 
+  getOption() {
+    return this.option;
+  }
   count(acc, cur) {
     if (cur !== undefined) return acc + 1;
   }

@@ -1,9 +1,10 @@
 class Log {
-  constructor(result) {
+  constructor(option, result) {
+    this.option = option;
     this.result = result;
   }
   print() {
-    console.log(this.result);
+    console.log(`${this.option}:${this.result}`);
   }
 }
 

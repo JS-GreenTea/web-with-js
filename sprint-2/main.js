@@ -16,7 +16,10 @@ function main() {
     commander.parseCommand();
     const [callbackFunction, testArray] =
       commander.giveCallBackFuncAndOperateElementsByOption();
-    const resultLog = new Log(testArray.customReduce(callbackFunction, 0));
+    const resultLog = new Log(
+      commander.getOption(),
+      testArray.customReduce(callbackFunction, 0)
+    );
     resultLog.print();
   }
 }

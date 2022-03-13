@@ -15,13 +15,20 @@ reduce 함수
 Array.prototype.customReduce = function (callback, initialValue = 0) {
   let array = this.Array;
 
+  if (isReturnSingleValueCondition(array, arguments.length)) return array[0];
+
   let { accumulator, currentValue, currentIndex } = initializeByHasInitialValue(
     arguments.length,
     initialValue,
-    arr
+    array
   );
 
-  // initialValue 제공
+  while (currentIndex !== array.length) {
+    accumulator = callback(accumulator, currentValue);
+    currentValue = array[++currentIndex];
+  }
+
+  return accumulator;
 };
 
 function initializeByHasInitialValue(argsLength, initialValue, arr) {
@@ -46,5 +53,16 @@ function initializeByHasInitialValue(argsLength, initialValue, arr) {
 
 function isArrayHasOneElement(arr) {
   return arr.length === 1;
+}
+
+function isNotGiveInitialValue(argsLength) {
+  return argsLength === 1;
+}
+
+function isReturnSingleValueCondition(array, argsLength) {
+  return (
+    (isArrayHasOneElement(array) && !isNotGiveInitialValue(argsLength)) ||
+    (isArrayHasOneElement(array) && isNotGiveInitialValue(argsLength))
+  );
 }
 module.exports = Array;

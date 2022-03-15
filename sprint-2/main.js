@@ -1,4 +1,12 @@
 const Commander = require("./domain/commander");
 const Log = require("./util/log");
-function main() {}
+
+function main() {
+  const inputValue = 'count 1 2 3 4 5'
+
+  const commander = new Commander(inputValue);
+  const log =new Log(commander);
+
+  log.print();
+}
 main();

@@ -4,6 +4,8 @@ class Commander {
   inputValue = '';
   command = '';
   numbers = [];
+  result = '';
+
 
   constructor(inputValue) {
     this.inputValue = inputValue;
@@ -28,11 +30,13 @@ class Commander {
   }
 
   count() {
-    return this.numbers.customReduce((accumulator, currentValue, currentIndex) => accumulator + currentIndex);
+    const countNumbers = this.numbers.customReduce((accumulator, currentValue, currentIndex) => accumulator + 1, 0);
+    this.result = `count: ${countNumbers}`;
   }
 
   add() {
-    return this.numbers.customReduce((accumulator, currentValue) => accumulator + currentValue);
+    const addNumbers = this.numbers.customReduce((accumulator, currentValue) => accumulator + currentValue);
+    this.result = `add: ${addNumbers}`;
   }
 
   getResult() {

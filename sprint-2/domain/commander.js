@@ -15,7 +15,7 @@ class Commander {
     const arr = this.inputValue.split(' ');
     this.command = arr[0];
     for(let i = 1; i < arr.length; i++) {
-      this.numbers.push(arr[i]);
+      this.numbers.push(Number(arr[i]));
     }
   }
 

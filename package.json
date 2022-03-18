@@ -1,0 +1,19 @@
+{
+  "name": "web-with",
+  "version": "1.0.0",
+  "description": "- 이언어는 뭐야?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SingTheCode/web-with-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SingTheCode/web-with-js/issues"
+  },
+  "homepage": "https://github.com/SingTheCode/web-with-js#readme"
+}

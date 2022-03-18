@@ -34,5 +34,14 @@ class Commander {
   add() {
     return this.numbers.customReduce((accumulator, currentValue) => accumulator + currentValue);
   }
+
+  getResult() {
+    return this.result;
+  }
+
+  init() {
+    this.separateNumbersCommands();
+    this.selectCommands();
+  }
 }
 module.exports = Commander;

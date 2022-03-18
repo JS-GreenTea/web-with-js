@@ -26,5 +26,13 @@ class Commander {
       this.add();
     }
   }
+
+  count() {
+    return this.numbers.customReduce((accumulator, currentValue, currentIndex) => accumulator + currentIndex);
+  }
+
+  add() {
+    return this.numbers.customReduce((accumulator, currentValue) => accumulator + currentValue);
+  }
 }
 module.exports = Commander;

@@ -19,6 +19,11 @@ class Commander {
   exec(option, array) {
     return this.options[option](array);
   }
+
+  run(command) {
+    const [option, array] = this.parse(command);
+    return [option, this.exec(option, array)];
+  }
 }
 
 module.exports = Commander;

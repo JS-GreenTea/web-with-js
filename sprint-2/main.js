@@ -9,7 +9,6 @@ function main() {
     "add 1 2 3 4 5 6 7 8 9 10",
     "count 1 가 나 다 라 xx df 8개",
   ];
-  const testData = [1, 2, 3, 4, 5];
 
   for (let i = 0; i < inputData.length; i++) {
     const commander = new Commander(inputData[i]);

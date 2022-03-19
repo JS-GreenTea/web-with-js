@@ -28,9 +28,11 @@ class Commander {
   getOption() {
     return this.option;
   }
+
   count(acc, cur) {
     if (cur !== undefined) return acc + 1;
   }
+
   add(acc, cur) {
     return acc + cur;
   }

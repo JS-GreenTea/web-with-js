@@ -15,6 +15,10 @@ class Commander {
 
     return [option, array];
   }
+
+  exec(option, array) {
+    return this.options[option](array);
+  }
 }
 
 module.exports = Commander;

@@ -1,6 +1,7 @@
 Array.prototype.customReduce = function(callback, initialValue = 0) {
-  let array = Object(this);
+  const array = Object(this);
   const length = array.length;
+
   let accumulator = array[0];
   let index = 1;
 
@@ -12,7 +13,7 @@ Array.prototype.customReduce = function(callback, initialValue = 0) {
 
   while(index < length) {
     let currentValue = array[index];
-    accumulator = callback(accumulator, currentValue, currentIndex = index, array = array);
+    accumulator = callback(accumulator, currentValue, index, array);
     index++;
   }
   return accumulator;

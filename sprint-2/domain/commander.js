@@ -9,6 +9,9 @@ class Commander {
 
   constructor(inputValue) {
     this.inputValue = inputValue;
+
+    this.separateNumbersCommands();
+    this.selectCommands();
   }
 
   separateNumbersCommands() {
@@ -41,11 +44,6 @@ class Commander {
 
   getResult() {
     return this.result;
-  }
-
-  init() {
-    this.separateNumbersCommands();
-    this.selectCommands();
   }
 }
 module.exports = Commander;

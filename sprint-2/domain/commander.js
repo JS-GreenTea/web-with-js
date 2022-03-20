@@ -15,7 +15,7 @@ class Commander {
     const arr = this.inputValue.split(' ');
     this.command = arr[0];
     for(let i = 1; i < arr.length; i++) {
-      this.numbers.push(Number(arr[i]));
+      this.numbers.push(arr[i]);
     }
   }
 
@@ -30,12 +30,12 @@ class Commander {
   }
 
   count() {
-    const countNumbers = this.numbers.customReduce((accumulator, currentValue, currentIndex) => accumulator + 1, 0);
+    const countNumbers = this.numbers.customReduce((accumulator, currentValue, currentIndex) => Number(accumulator) + 1, 0);
     this.result = `count: ${countNumbers}`;
   }
 
   add() {
-    const addNumbers = this.numbers.customReduce((accumulator, currentValue) => accumulator + currentValue);
+    const addNumbers = this.numbers.customReduce((accumulator, currentValue) => Number(accumulator) + Number(currentValue));
     this.result = `add: ${addNumbers}`;
   }
 

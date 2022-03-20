@@ -1,10 +1,8 @@
 Array.prototype.customReduce = function(callback, initialValue = 0) {
   const array = Object(this);
   const length = array.length;
-
   let accumulator = array[0];
   let index = 1;
-
 
   if (initialValue !== 0) {
     accumulator = initialValue;

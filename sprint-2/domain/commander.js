@@ -6,7 +6,6 @@ class Commander {
   numbers = [];
   result = [];
 
-
   constructor(inputValue) {
     this.inputValue = inputValue;
 

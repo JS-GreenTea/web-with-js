@@ -4,7 +4,7 @@ class Log {
   }
 
   print() {
-    console.log(this.result);
+    console.log(`${this.result[0]}: ${this.result[1]}`)
   }
 }
 

@@ -4,7 +4,7 @@ class Commander {
   inputValue = '';
   command = '';
   numbers = [];
-  result = '';
+  result = [];
 
 
   constructor(inputValue) {
@@ -31,12 +31,12 @@ class Commander {
 
   count() {
     const countNumbers = this.numbers.customReduce((accumulator, currentValue, currentIndex) => Number(accumulator) + 1, 0);
-    this.result = `count: ${countNumbers}`;
+    this.result = ['count', countNumbers];
   }
 
   add() {
     const addNumbers = this.numbers.customReduce((accumulator, currentValue) => Number(accumulator) + Number(currentValue));
-    this.result = `add: ${addNumbers}`;
+    this.result = ['add', addNumbers];
   }
 
   getResult() {

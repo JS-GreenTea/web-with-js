@@ -10,7 +10,7 @@ Array.prototype.customReduce = function (callback, initialValue = 0) {
   );
 
   while (currentIndex !== array.length) {
-    accumulator = callback(accumulator, currentValue);
+    accumulator = callback(accumulator, currentValue, currentIndex, array);
     currentValue = array[++currentIndex];
   }
 

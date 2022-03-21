@@ -47,8 +47,8 @@ function isGiveInitialValue(argsLength) {
 
 function isReturnSingleValueCondition(array, argsLength) {
   return (
-    (arr.length === 1 && !isGiveInitialValue(argsLength)) ||
-    (arr.length === 0 && isGiveInitialValue(argsLength))
+    (array.length === 1 && !isGiveInitialValue(argsLength)) ||
+    (array.length === 0 && isGiveInitialValue(argsLength))
   );
 }
 

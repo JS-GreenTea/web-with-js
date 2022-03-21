@@ -41,14 +41,15 @@ function isArrayHasOneElement(arr) {
   return arr.length === 1;
 }
 
-function isNotGiveInitialValue(argsLength) {
-  return argsLength === 1;
+function isGiveInitialValue(argsLength) {
+  return argsLength !== 1;
 }
 
 function isReturnSingleValueCondition(array, argsLength) {
   return (
-    (isArrayHasOneElement(array) && !isNotGiveInitialValue(argsLength)) ||
-    (isArrayHasOneElement(array) && isNotGiveInitialValue(argsLength))
+    (arr.length === 1 && !isGiveInitialValue(argsLength)) ||
+    (arr.length === 0 && isGiveInitialValue(argsLength))
   );
 }
+
 module.exports = Array;

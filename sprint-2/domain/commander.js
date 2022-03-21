@@ -4,10 +4,7 @@ class Commander {
   }
 
   parseCommand() {
-    const parsedCommandArray = this.command.split(" ");
-    const option = parsedCommandArray[0];
-    const operateElements = parsedCommandArray.slice(1);
-
+    const [option, ...operateElements] = this.command.split(" ");
     this.option = option;
     this.operateElements = operateElements;
   }

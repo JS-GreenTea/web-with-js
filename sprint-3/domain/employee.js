@@ -3,8 +3,8 @@ class Employee {
     this.name = name;
   }
 
-  makeBurger(time) {
-    console.log(`${time / 1000}: 햄버거를 완성하였습니다.`);
+  makeBurger() {
+    return "햄버거를 완성하였습니다.";
   }
 }
 

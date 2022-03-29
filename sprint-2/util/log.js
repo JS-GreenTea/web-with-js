@@ -1,5 +1,9 @@
 class Log {
   constructor() {}
+
+  result(tag, value) {
+    console.log(`${tag}: ${value}`);
+  }
 }
 
-module.exports = TimeConverter;
+module.exports = Log;

@@ -16,14 +16,14 @@ function syncf(numOrder, delayTime) {
 
 function asyncf(numOrder, delayTime) {
   let end = 0;
-  let tmpTime = 0;
+  let result = 0;
 
   setTimeout(() => {
     end = new Date().getTime();
-    tmpTime = end - start;
-    tmpTime = parseInt(tmpTime / 1000);
+    result = end - start;
+    result = parseInt(result / 1000);
 
-    console.log(tmpTime, numOrder);
+    console.log(result, numOrder);
   }, delayTime);
 }
 

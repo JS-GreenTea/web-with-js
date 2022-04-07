@@ -1,5 +1,10 @@
 class Employee {
-  constructor() {}
+  static startTime = new Date().getTime();
+  runningTime = 0;
+
+  constructor(name) {
+    this.name = name;
+  }
 
   runTimeFor() {
     let result = 0;

@@ -1,8 +1,20 @@
 class Employee {
   constructor() {}
 
-  makeBurger(result) {
-    console.log(result, ":", "햄버거를 완성하였습니다.");
+  runTimeFor() {
+    let result = 0;
+    let endTime = new Date().getTime();
+    result = endTime - Employee.startTime;
+    result = parseInt(result / 1000);
+    return result;
+  }
+
+  makeBurger() {
+    this.runningTime = this.runTimeFor();
+  }
+
+  getRunningTime() {
+    return this.runningTime;
   }
 }
 

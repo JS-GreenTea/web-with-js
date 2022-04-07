@@ -1,21 +1,20 @@
 class Employee {
-  static startTime = new Date().getTime();
   runningTime = 0;
 
   constructor(name) {
     this.name = name;
   }
 
-  runTimeFor() {
+  runTimeFor(startTime) {
     let result = 0;
     let endTime = new Date().getTime();
-    result = endTime - Employee.startTime;
+    result = endTime - startTime;
     result = parseInt(result / 1000);
     return result;
   }
 
-  makeBurger() {
-    this.runningTime = this.runTimeFor();
+  makeBurger(startTime) {
+    this.runningTime = this.runTimeFor(startTime);
   }
 
   getRunningTime() {

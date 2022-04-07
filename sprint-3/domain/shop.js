@@ -4,12 +4,7 @@ class Shop {
   }
 
   alarmRunningTimeFor(employee) {
-    console.log(
-      employee.getRunningTime(),
-      ":",
-      employee.name,
-      "햄버거를 완성하였습니다."
-    );
+    console.log(`${employee.getRunningTime()} : ${employee.name}가 햄버거를 완성하였습니다.`);
   }
 
   order(burgerNum) {

@@ -3,12 +3,13 @@ class Shop {
     this.employees = employees;
   }
 
-  runningTimeFor() {
-    let result = 0;
-    let endTime = new Date().getTime();
-    result = endTime - this.start;
-    result = parseInt(result / 1000);
-    return result;
+  alarmRunningTimeFor(employee) {
+    console.log(
+      employee.getRunningTime(),
+      ":",
+      employee.name,
+      "햄버거를 완성하였습니다."
+    );
   }
 
   order(burgerNum) {

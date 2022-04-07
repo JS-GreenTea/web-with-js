@@ -13,10 +13,11 @@ class Shop {
   }
 
   order(burgerNum) {
+    const orderStartTime = new Date().getTime();
     this.employees.forEach((employee) => {
       const flowInterval = setInterval(() => {
         if (burgerNum > 0) {
-          employee.makeBurger(burgerNum);
+          employee.makeBurger(orderStartTime);
           burgerNum -= 1;
           this.alarmRunningTimeFor(employee);
         } else if (burgerNum === 0) {

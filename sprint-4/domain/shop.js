@@ -6,11 +6,20 @@ class Shop {
     this.orderStartTime = new Date().getTime();
     this.employees = [];
 
-    const randomPick = Math.floor(Math.random() * burgerInfo.length);
-    console.log(burgerInfo[randomPick]);
+    const menus = Object.keys(burgerInfo);
+    const randomBurgerSkillList = this.randomBurgerSkill(
+      menus,
+      numberEmployees,
+      "햄버거"
+    );
 
-    for (let i = 0; i < numberEmployees; i++) {
-      this.employees.push(new Employee(burgerInfo["햄버거"]));
+    for (let burgerSkill of randomBurgerSkillList) {
+      burgerSkill = burgerSkill.reduce(
+        (acc, key) => ({ ...acc, [key]: burgerInfo[key] }),
+        {}
+      );
+
+      this.employees.push(new Employee(burgerSkill));
     }
   }
 
@@ -23,6 +32,17 @@ class Shop {
       case "치킨버거":
         break;
     }
+  }
+
+  randomBurgerSkill(menu, numberEmployees, defaultSkill) {
+    let result = [];
+    menu = menu.filter((key) => key != defaultSkill);
+
+    for (let i = 0; i < numberEmployees; i++) {
+      const randomPick = Math.floor(Math.random() * menu.length);
+      result.push([defaultSkill, menu[randomPick]]);
+    }
+    return result;
   }
 }
 

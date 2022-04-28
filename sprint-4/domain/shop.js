@@ -12,18 +12,35 @@ class Shop {
       numberEmployees,
       "햄버거"
     );
-
+    let i = 0;
     for (let burgerSkill of randomBurgerSkillList) {
       burgerSkill = burgerSkill.reduce(
         (acc, key) => ({ ...acc, [key]: burgerInfo[key] }),
         {}
       );
 
-      this.employees.push(new Employee(burgerSkill));
+      this.employees.push(new Employee(burgerSkill, i++));
     }
+
+    this.employees.sort((obj1, obj2) => {
+      return obj2.workingTime - obj1.workingTime;
+    });
+
+    console.log(this.employees);
   }
 
   order(menu) {
+    this.employees.sort((obj1, obj2) => {
+      return obj2.workingTime - obj1.workingTime;
+    });
+
+    while (true) {
+      this.employees.forEach((employee) => {
+        if (menu in employee.burgerSkills) {
+        }
+      });
+    }
+
     switch (menu) {
       case "햄버거":
         break;

@@ -1,6 +1,20 @@
 class Employee {
-  constructor(burgerSkills) {
+  constructor(burgerSkills, workingTime) {
     this.burgerSkills = burgerSkills;
+    this.workingTime = workingTime;
+    this.workStack = [];
+  }
+
+  workingTime() {
+    return this.workingTime;
+  }
+
+  workStack() {
+    return this.workStack;
+  }
+
+  burgerSkills() {
+    return this.burgerSkills;
   }
 
   makeBurger(burgerName) {

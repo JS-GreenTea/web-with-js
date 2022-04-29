@@ -12,42 +12,39 @@ class Shop {
       numberEmployees,
       "햄버거"
     );
+
     let i = 0;
+
     for (let burgerSkill of randomBurgerSkillList) {
       burgerSkill = burgerSkill.reduce(
         (acc, key) => ({ ...acc, [key]: burgerInfo[key] }),
         {}
       );
 
-      this.employees.push(new Employee(burgerSkill, i++));
+      this.employees.push(new Employee(`직원${++i}`, burgerSkill));
+      console.log(
+        `직원${i}는 ${Object.keys(burgerSkill).join(", ")}를 만들 수 있습니다.`
+      );
     }
+  }
 
-    this.employees.sort((obj1, obj2) => {
-      return obj2.workingTime - obj1.workingTime;
-    });
-
-    console.log(this.employees);
+  orderAll(menuList) {
+    menuList.forEach((menu) => this.order(menu));
+    this.employees.forEach((employee) => employee.work());
   }
 
   order(menu) {
+    // workingTime 오름차순 정렬
     this.employees.sort((obj1, obj2) => {
-      return obj2.workingTime - obj1.workingTime;
+      return obj1.workingTime - obj2.workingTime;
     });
 
-    while (true) {
-      this.employees.forEach((employee) => {
-        if (menu in employee.burgerSkills) {
-        }
-      });
-    }
-
-    switch (menu) {
-      case "햄버거":
+    for (let employee of this.employees) {
+      if (menu in employee.burgerSkills) {
+        employee.workingTime += employee.burgerSkills[menu];
+        employee.workStack.push(menu);
         break;
-      case "치즈버거":
-        break;
-      case "치킨버거":
-        break;
+      }
     }
   }
 

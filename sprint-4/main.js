@@ -1,4 +1,4 @@
-const Shop = require("./domain/shop");
+const { Shop } = require("./domain/shop");
 
 function main() {
   const lotteria = new Shop(3);

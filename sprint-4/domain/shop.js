@@ -60,4 +60,11 @@ class Shop {
   }
 }
 
-module.exports = Shop;
+function sampleShopData() {
+  return 3;
+}
+
+module.exports = {
+  Shop,
+  sampleShopData,
+};

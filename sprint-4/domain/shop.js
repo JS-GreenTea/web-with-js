@@ -34,10 +34,7 @@ class Shop {
   }
 
   order(menu) {
-    // workingTime 오름차순 정렬
-    this.employees.sort((obj1, obj2) => {
-      return obj1.workingTime - obj2.workingTime;
-    });
+    this.sortEmployees();
 
     for (let employee of this.employees) {
       if (menu in employee.burgerSkills) {
@@ -46,6 +43,12 @@ class Shop {
         break;
       }
     }
+  }
+
+  sortEmployees() {
+    this.employees.sort((obj1, obj2) => {
+      return obj1.workingTime - obj2.workingTime;
+    });
   }
 
   randomBurgerSkill(menu, numberEmployees, defaultSkill) {

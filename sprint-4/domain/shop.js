@@ -19,10 +19,12 @@ export class Shop {
         for (let j = 0; j < this.employees.length; j++) {
           let employee = this.employees[j];
           if(!employee.isWorking && employee.canMakingBurgerTypes(burgers[i]) && !burgers[i].getIsMade()) {
-            employee.makeBurger(burgers[i], this.totalTime)
+            employee.makeBurger(burgers[i], this.getTotalTime())
               .then(burgers[i].setIsMade(true))
-              .then(this.setTotalTime(burgers[i].getMakingTime() + this.getTotalTime()));
-            
+              .then(() => {
+                this.setTotalTime(burgers[i].getMakingTime() + this.getTotalTime());
+              })
+              .catch((e) => console.error(e));
             finishedBurger += 1;
           }
         }

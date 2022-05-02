@@ -13,7 +13,7 @@ export class Shop {
     // 1.3 빨리 끝나는 직원에게 할당
     // 2. 모두 남는다면 앞에 있는 사람에게 할등
     let finishedBurger = 0;
-    
+    let finishedOrder = 0;
     while(finishedBurger !== burgers.length) {
       for(let i = 0; i < burgers.length; i++) {
         for (let j = 0; j < this.employees.length; j++) {
@@ -23,6 +23,10 @@ export class Shop {
               .then(burgers[i].setIsMade(true))
               .then(() => {
                 this.setTotalTime(burgers[i].getMakingTime() + this.getTotalTime());
+                finishedOrder += 1;
+                if(finishedOrder === burgers.length){
+                  console.log("종료");
+                }
               })
               .catch((e) => console.error(e));
             finishedBurger += 1;
@@ -30,7 +34,6 @@ export class Shop {
         }
       }
     }
-    return;
   }
 
   getTotalTime() {

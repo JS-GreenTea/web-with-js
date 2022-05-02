@@ -3,7 +3,6 @@ const { burgerInfo } = require("../config.js");
 
 class Shop {
   constructor(numberEmployees) {
-    this.orderStartTime = new Date().getTime();
     this.employees = [];
 
     const menus = Object.keys(burgerInfo);
@@ -14,26 +13,23 @@ class Shop {
     );
 
     let i = 0;
-
     for (let burgerSkill of randomBurgerSkillList) {
       burgerSkill = burgerSkill.reduce(
         (acc, key) => ({ ...acc, [key]: burgerInfo[key] }),
         {}
       );
+      this.announce(`직원${i}`, burgerSkill);
 
       this.employees.push(new Employee(`직원${++i}`, burgerSkill));
-      console.log(
-        `직원${i}는 ${Object.keys(burgerSkill).join(", ")}를 만들 수 있습니다.`
-      );
     }
   }
 
-  orderAll(menuList) {
-    menuList.forEach((menu) => this.order(menu));
+  order(menuList) {
+    menuList.forEach((menu) => this.distributeWork(menu));
     this.employees.forEach((employee) => employee.work());
   }
 
-  order(menu) {
+  distributeWork(menu) {
     this.sortEmployees();
 
     for (let employee of this.employees) {
@@ -61,13 +57,16 @@ class Shop {
     }
     return result;
   }
-}
 
-function sampleShopData() {
-  return 3;
+  announce(employeeName, burgerSkill) {
+    console.log(
+      `${employeeName}는 ${Object.keys(burgerSkill).join(
+        ", "
+      )}를 만들 수 있습니다.`
+    );
+  }
 }
 
 module.exports = {
   Shop,
-  sampleShopData,
 };

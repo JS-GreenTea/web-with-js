@@ -2,7 +2,7 @@ const { Shop } = require("./domain/shop");
 
 function main() {
   const lotteria = new Shop(3);
-  lotteria.orderAll([
+  lotteria.order([
     "햄버거",
     "치즈버거",
     "치즈버거",

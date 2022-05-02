@@ -1,26 +1,26 @@
-const Employee = require("./employee.js");
 const { burgerInfo } = require("../config.js");
 
 class Shop {
-  constructor(numberEmployees) {
-    this.employees = [];
+  constructor(employees) {
+    this.employees = employees;
+    this.distributeBurgerSkill();
+  }
 
+  distributeBurgerSkill() {
     const menus = Object.keys(burgerInfo);
     const randomBurgerSkillList = this.randomBurgerSkill(
       menus,
-      numberEmployees,
+      this.employees.length,
       "햄버거"
     );
 
-    let i = 0;
-    for (let burgerSkill of randomBurgerSkillList) {
-      burgerSkill = burgerSkill.reduce(
+    for (let i = 0; i < randomBurgerSkillList.length; i++) {
+      const burgerSkill = randomBurgerSkillList[i].reduce(
         (acc, key) => ({ ...acc, [key]: burgerInfo[key] }),
         {}
       );
-      this.announce(`직원${i}`, burgerSkill);
-
-      this.employees.push(new Employee(`직원${++i}`, burgerSkill));
+      this.announce(this.employees[i].name, burgerSkill);
+      this.employees[i].setBurgerSkill(burgerSkill);
     }
   }
 
@@ -51,7 +51,11 @@ class Shop {
     let result = [];
     menu = menu.filter((key) => key != defaultSkill);
 
-    for (let i = 0; i < numberEmployees; i++) {
+    for (let i = 0; i < Object.keys(burgerInfo).length - 1; i++) {
+      result.push([defaultSkill, menu[i]]);
+    }
+
+    for (let i = Object.keys(burgerInfo).length - 1; i < numberEmployees; i++) {
       const randomPick = Math.floor(Math.random() * menu.length);
       result.push([defaultSkill, menu[randomPick]]);
     }
@@ -67,6 +71,4 @@ class Shop {
   }
 }
 
-module.exports = {
-  Shop,
-};
+module.exports = Shop;

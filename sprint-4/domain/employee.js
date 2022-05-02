@@ -1,9 +1,13 @@
 class Employee {
-  constructor(name, burgerSkills) {
+  constructor(name) {
     this.name = name;
-    this.burgerSkills = burgerSkills;
+    this.burgerSkills = {};
     this.workingTime = 0;
     this.workStack = [];
+  }
+
+  setBurgerSkill(burgerSkills) {
+    this.burgerSkills = burgerSkills;
   }
 
   makeBurger(burgerName, makingTime, workingTime) {
@@ -16,6 +20,8 @@ class Employee {
   }
 
   work() {
+    if (this.workStack.length < 1) return;
+
     let promise = this.makeBurger(
       this.workStack[0],
       this.burgerSkills[this.workStack[0]],

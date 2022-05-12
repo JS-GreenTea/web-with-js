@@ -8,6 +8,12 @@ class Game extends EventEmitter {
     this.currentNum = 0;
     this.eventTarget = "";
   }
+  start(startPerson) {
+    this.increseCurrentNum();
+    this.setEventTarget();
+    this.announceTurn();
+    this.receiveAnswer();
+  }
 }
 
 module.exports = Game;

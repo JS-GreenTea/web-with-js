@@ -27,7 +27,14 @@ class Game extends EventEmitter {
     console.log(`B: ${answer}`);
   }
 
-
+  // 순서가 바뀔 수 있음을 처리해야 함.
+  setEventTarget() {
+    if (this.currentNum % 2 === 0) {
+      this.eventTarget = "A";
+    } else {
+      this.eventTarget = "B";
+    }
+  }
 }
 
 module.exports = Game;

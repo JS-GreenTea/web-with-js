@@ -9,10 +9,14 @@ class Game extends EventEmitter {
     this.eventTarget = "";
   }
   start(startPerson) {
-    this.increseCurrentNum();
+    this.increaseCurrentNum();
     this.setEventTarget();
     this.announceTurn();
     this.receiveAnswer();
+  }
+
+  increaseCurrentNum() {
+    this.currentNum++;
   }
 }
 

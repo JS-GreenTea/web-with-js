@@ -18,6 +18,16 @@ class Game extends EventEmitter {
   increaseCurrentNum() {
     this.currentNum++;
   }
+
+  sayAnswerA(answer) {
+    console.log(`A: ${answer}`);
+  }
+
+  sayAnswerB(answer) {
+    console.log(`B: ${answer}`);
+  }
+
+
 }
 
 module.exports = Game;

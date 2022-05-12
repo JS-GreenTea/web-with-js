@@ -27,6 +27,10 @@ class Game extends EventEmitter {
     console.log(`B: ${answer}`);
   }
 
+  announceTurn() {
+    this.emit(this.eventTarget, this.currentNum);
+  }
+
   // 순서가 바뀔 수 있음을 처리해야 함.
   setEventTarget() {
     if (this.currentNum % 2 === 0) {

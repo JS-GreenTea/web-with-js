@@ -27,16 +27,17 @@ class Game extends EventEmitter {
 
     while (isPlaying) {
       playerIdx %= this.players.length;
+
       const player = this.players[playerIdx];
       const result = player.clapOrSpeak(curNum);
 
+      this.emit("showResult", player.name, result);
+
       if (this.isCorrectAnswer(curNum, result)) {
-        this.emit("showResult", player.name, result);
         playerIdx++;
         curNum++;
       } else {
         const winner = this.players.filter((obj) => obj.name !== player.name);
-        this.emit("showResult", player.name, result);
         this.emit("showWinner", joinName(winner));
         isPlaying = false;
       }

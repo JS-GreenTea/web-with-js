@@ -25,18 +25,15 @@ class Game extends EventEmitter {
 
     let playerIdx = this.players.findIndex((obj) => obj.name === player.name);
     let currentNum = 1;
-    let status = true;
+    let isPlaying = true;
 
-    while (status) {
+    while (isPlaying) {
       playerIdx %= this.players.length;
       const player = this.players[playerIdx];
       const result = player.clapOrSpeak(currentNum);
 
       // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
-      if (
-        (is369In(currentNum) && result === CLAP) ||
-        (!is369In(currentNum) && result === currentNum)
-      ) {
+      if (this.isCorrectAnswer(currentNum, result)) {
         this.emit("pass", player.name, result);
         playerIdx++;
         currentNum++;
@@ -49,11 +46,19 @@ class Game extends EventEmitter {
             .map((obj) => obj.name)
             .join(",")
         );
-        status = false;
+
+        isPlaying = false;
       }
     }
 
     return this;
+  }
+
+  isCorrectAnswer(currentNum, result) {
+    return (
+      (is369In(currentNum) && result === CLAP) ||
+      (!is369In(currentNum) && result === currentNum)
+    );
   }
 }
 

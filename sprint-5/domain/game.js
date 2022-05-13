@@ -1,5 +1,6 @@
 const EventEmitter = require("events");
 const { CLAP } = require("../costants.js");
+const { is369In } = require("../utils.js");
 
 class Game extends EventEmitter {
   constructor() {
@@ -33,8 +34,8 @@ class Game extends EventEmitter {
 
       // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
       if (
-        (this.isClap(currentNum) && result === CLAP) ||
-        (!this.isClap(currentNum) && result === currentNum)
+        (is369In(currentNum) && result === CLAP) ||
+        (!is369In(currentNum) && result === currentNum)
       ) {
         this.emit("pass", player.name, result);
         playerIdx++;
@@ -53,15 +54,6 @@ class Game extends EventEmitter {
     }
 
     return this;
-  }
-
-  isClap(num) {
-    return (
-      num
-        .toString()
-        .split("")
-        .findIndex((num) => num != 0 && num % 3 === 0) !== -1
-    );
   }
 }
 

@@ -1,4 +1,5 @@
 const { CLAP } = require("../costants.js");
+const { is369In } = require("../utils.js");
 
 class Person {
   constructor(name) {
@@ -10,14 +11,10 @@ class Person {
   }
 
   clapOrSpeak(num) {
-    if (
-      num
-        .toString()
-        .split("")
-        .findIndex((num) => num != 0 && num % 3 === 0) !== -1
-    ) {
+    if (is369In(num)) {
       return Math.floor(Math.random() * 2) ? CLAP : num;
     }
+
     return num;
   }
 }

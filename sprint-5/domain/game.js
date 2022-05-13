@@ -20,29 +20,28 @@ class Game extends EventEmitter {
 
   startGameBy(player) {
     if (this.players.length === 0) {
-      return;
+      return this;
     }
 
     let playerIdx = this.players.findIndex((obj) => obj.name === player.name);
-    let currentNum = 1;
+    let curNum = 1;
     let isPlaying = true;
 
     while (isPlaying) {
       playerIdx %= this.players.length;
       const player = this.players[playerIdx];
-      const result = player.clapOrSpeak(currentNum);
+      const result = player.clapOrSpeak(curNum);
 
-      if (this.isCorrectAnswer(currentNum, result)) {
+      if (this.isCorrectAnswer(curNum, result)) {
         this.emit("show", player.name, result);
         playerIdx++;
-        currentNum++;
+        curNum++;
       } else {
         this.emit("show", player.name, result);
         this.emit(
           "fail",
           joinName(this.players.filter((obj) => obj.name !== player.name))
         );
-
         isPlaying = false;
       }
     }
@@ -50,10 +49,10 @@ class Game extends EventEmitter {
     return this;
   }
 
-  isCorrectAnswer(currentNum, result) {
+  isCorrectAnswer(curNum, result) {
     return (
-      (is369In(currentNum) && result === CLAP) ||
-      (!is369In(currentNum) && result === currentNum)
+      (is369In(curNum) && result === CLAP) ||
+      (!is369In(curNum) && result === curNum)
     );
   }
 }

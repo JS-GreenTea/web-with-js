@@ -6,7 +6,7 @@ function main() {
   const fry = new Person("구라니");
 
   const game = new Game()
-    .on("pass", (name, result) => console.log(`${name}: ${result}`))
+    .on("show", (name, result) => console.log(`${name}: ${result}`))
     .on("fail", (winner) => console.log(`${winner}가 승리했습니다.`));
 
   maenji.startGameWith(game, fry);

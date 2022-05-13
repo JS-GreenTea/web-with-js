@@ -34,11 +34,11 @@ class Game extends EventEmitter {
 
       // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
       if (this.isCorrectAnswer(currentNum, result)) {
-        this.emit("pass", player.name, result);
+        this.emit("show", player.name, result);
         playerIdx++;
         currentNum++;
       } else {
-        this.emit("pass", player.name, result);
+        this.emit("show", player.name, result);
         this.emit(
           "fail",
           this.players

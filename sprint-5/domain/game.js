@@ -1,4 +1,5 @@
 const EventEmitter = require("events");
+const { CLAP } = require("../costants.js");
 
 class Game extends EventEmitter {
   constructor() {
@@ -32,7 +33,7 @@ class Game extends EventEmitter {
 
       // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
       if (
-        (this.isClap(currentNum) && result === "짝") ||
+        (this.isClap(currentNum) && result === CLAP) ||
         (!this.isClap(currentNum) && result === currentNum)
       ) {
         this.emit("pass", player.name, result);

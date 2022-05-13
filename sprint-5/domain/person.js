@@ -1,4 +1,5 @@
 const Game = require("./game.js");
+const { CLAP } = require("../costants.js");
 
 class Person {
   constructor(name) {
@@ -21,7 +22,7 @@ class Person {
         .split("")
         .findIndex((num) => num != 0 && num % 3 === 0) !== -1
     ) {
-      return Math.floor(Math.random() * 2) ? "짝" : num;
+      return Math.floor(Math.random() * 2) ? CLAP : num;
     }
     return num;
   }

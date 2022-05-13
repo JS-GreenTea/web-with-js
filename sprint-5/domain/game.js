@@ -1,6 +1,6 @@
 const EventEmitter = require("events");
 const { CLAP } = require("../costants.js");
-const { is369In } = require("../utils.js");
+const { is369In, joinName } = require("../utils.js");
 
 class Game extends EventEmitter {
   constructor() {
@@ -32,7 +32,6 @@ class Game extends EventEmitter {
       const player = this.players[playerIdx];
       const result = player.clapOrSpeak(currentNum);
 
-      // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
       if (this.isCorrectAnswer(currentNum, result)) {
         this.emit("show", player.name, result);
         playerIdx++;
@@ -41,10 +40,7 @@ class Game extends EventEmitter {
         this.emit("show", player.name, result);
         this.emit(
           "fail",
-          this.players
-            .filter((obj) => obj.name !== player.name)
-            .map((obj) => obj.name)
-            .join(",")
+          joinName(this.players.filter((obj) => obj.name !== player.name))
         );
 
         isPlaying = false;

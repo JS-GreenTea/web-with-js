@@ -7,4 +7,8 @@ const is369In = (num) => {
   );
 };
 
-module.exports = { is369In };
+const joinName = (players) => {
+  return players.map((obj) => obj.name).join(",");
+};
+
+module.exports = { is369In, joinName };

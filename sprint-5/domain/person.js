@@ -6,8 +6,14 @@ class Person {
     this.name = name;
   }
 
-  startGameWith(game, friend) {
-    game.addPlayer(this).addPlayer(friend).startGameBy(this);
+  startGameWith(game, ...friends) {
+    game.addPlayer(this);
+    friends.forEach((friend) => {
+      game.addPlayer(friend);
+    });
+    game.startGameBy(this);
+
+    // game.addPlayer(this).addPlayer(friend).startGameBy(this);
   }
 
   clapOrSpeak(num) {

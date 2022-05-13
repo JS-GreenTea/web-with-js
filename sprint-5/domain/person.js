@@ -1,4 +1,3 @@
-const Game = require("./game.js");
 const { CLAP } = require("../costants.js");
 
 class Person {
@@ -6,13 +5,8 @@ class Person {
     this.name = name;
   }
 
-  startWith(friend) {
-    new Game()
-      .addPlayer(this)
-      .addPlayer(friend)
-      .on("pass", (name, result) => console.log(`${name}: ${result}`))
-      .on("fail", (winner) => console.log(`${winner}가 승리했습니다.`))
-      .startGameBy(this);
+  startGameWith(game, friend) {
+    game.addPlayer(this).addPlayer(friend).startGameBy(this);
   }
 
   clapOrSpeak(num) {

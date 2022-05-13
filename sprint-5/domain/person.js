@@ -12,8 +12,6 @@ class Person {
       game.addPlayer(friend);
     });
     game.startGameBy(this);
-
-    // game.addPlayer(this).addPlayer(friend).startGameBy(this);
   }
 
   clapOrSpeak(num) {

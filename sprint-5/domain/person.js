@@ -15,7 +15,7 @@ class Person {
       .startGameBy(this);
   }
 
-  play(num) {
+  clapOrSpeak(num) {
     if (
       num
         .toString()

@@ -29,7 +29,7 @@ class Game extends EventEmitter {
     while (status) {
       playerIdx %= this.players.length;
       const player = this.players[playerIdx];
-      const result = player.play(currentNum);
+      const result = player.clapOrSpeak(currentNum);
 
       // 박수 쳐야하는 경우 (3, 6, 9가 포함된 경우)
       if (

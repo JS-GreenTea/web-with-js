@@ -9,7 +9,7 @@ function main() {
 
   const game = new Game()
     .on("show", (name, result) => console.log(`${name}: ${result}`))
-    .on("fail", (winner) => console.log(`${winner}가 승리했습니다.`));
+    .on("fail", (winner) => console.log(`${winner} 이(가) 승리했습니다.`));
 
   maenji.startGameWith(game, fry, happy, singco);
 }

@@ -23,9 +23,9 @@ class Game extends EventEmitter {
       return this;
     }
 
-    let playerIdx = this.players.findIndex((obj) => obj.name === player.name);
     let curNum = 1;
     let isPlaying = true;
+    let playerIdx = this.players.findIndex((obj) => obj.name === player.name);
 
     while (isPlaying) {
       playerIdx %= this.players.length;
@@ -37,11 +37,9 @@ class Game extends EventEmitter {
         playerIdx++;
         curNum++;
       } else {
+        const winner = this.players.filter((obj) => obj.name !== player.name);
         this.emit("show", player.name, result);
-        this.emit(
-          "fail",
-          joinName(this.players.filter((obj) => obj.name !== player.name))
-        );
+        this.emit("fail", joinName(winner));
         isPlaying = false;
       }
     }

@@ -10,17 +10,15 @@ class Game extends EventEmitter {
 
   addPlayer(player) {
     this.players.push(player);
-    return this;
   }
 
   removePlayer(player) {
-    this.players.filter((obj) => obj.name !== player.name);
-    return this;
+    this.players = this.players.filter((obj) => obj.name !== player.name);
   }
 
   startGameBy(player) {
     if (this.players.length === 0) {
-      return this;
+      return;
     }
 
     let curNum = 1;
@@ -33,18 +31,16 @@ class Game extends EventEmitter {
       const result = player.clapOrSpeak(curNum);
 
       if (this.isCorrectAnswer(curNum, result)) {
-        this.emit("show", player.name, result);
+        this.emit("showResult", player.name, result);
         playerIdx++;
         curNum++;
       } else {
         const winner = this.players.filter((obj) => obj.name !== player.name);
-        this.emit("show", player.name, result);
-        this.emit("fail", joinName(winner));
+        this.emit("showResult", player.name, result);
+        this.emit("showWinner", joinName(winner));
         isPlaying = false;
       }
     }
-
-    return this;
   }
 
   isCorrectAnswer(curNum, result) {

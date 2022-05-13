@@ -8,8 +8,10 @@ function main() {
   const singco = new Person("재현");
 
   const game = new Game()
-    .on("show", (name, result) => console.log(`${name}: ${result}`))
-    .on("fail", (winner) => console.log(`${winner} 이(가) 승리했습니다.`));
+    .on("showResult", (name, result) => console.log(`${name}: ${result}`))
+    .on("showWinner", (winner) =>
+      console.log(`${winner} 이(가) 승리했습니다.`)
+    );
 
   maenji.startGameWith(game, fry, happy, singco);
 }

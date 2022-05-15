@@ -1,0 +1,7 @@
+{
+  "name": "sprint-5",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "type": "module"
+}

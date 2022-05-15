@@ -8,18 +8,23 @@ export class Person extends EventEmitter {
         this.isPass = true;
     }
 
-    speak(number) {
+    play(number) {
         let nextNumber = number + 1;
+
+        this.speak(nextNumber);
+
+        if (this.isPass) {
+            return this.nextPerson.emit("speak", nextNumber);
+        }
+
+        return this.nextPerson.sayIsWinner(this);
+    }
+
+    speak(nextNumber) {
         if (this.isClap(nextNumber)) {
             console.log(`${this.name}: 짝`);
         } else {
             console.log(`${this.name}: ${nextNumber}`);
-        }
-
-        if (this.isPass) {
-            this.nextPerson.emit("speak", nextNumber);
-        } else {
-            this.nextPerson.sayIsWinner(this);
         }
     }
 
@@ -29,11 +34,11 @@ export class Person extends EventEmitter {
     }
 
     addNextPersonSpeak() {
-        this.on("speak", (number) => this.speak(number));
+        this.on("speak", (number) => this.play(number));
     }
 
     startGame() {
-        this.speak(0);
+        this.play(0);
     }
 
     isClap(number) {
@@ -41,16 +46,19 @@ export class Person extends EventEmitter {
 
         for (const oneNumber of numberString) {
             if(oneNumber == "3" || oneNumber == "6" || oneNumber == "9") {
-                // 실패시
-                if (Math.random() > 0.5) {
-                    this.isPass = false;
-                    return false;
-                } else {
-                    return true;
-                }
+                return this.isPassProbability();
             } 
         }
         return false;
+    }
+
+    isPassProbability() {
+        if (Math.random() > 0.5) {
+            this.isPass = false;
+            return false;
+        } else {
+            return true;
+        }
     }
 
     sayIsWinner(loser) {

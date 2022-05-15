@@ -1,7 +1,11 @@
-const personA = new Person("A");
-const personB = new Person("B");
+import { Person } from './domain/person.js';
+
+const personA = new Person("loopy");
+const personB = new Person("mimmi");
+const personC = new Person("singco");
 
 personA.makeFriend(personB);
-personB.makeFriend(personA);
+personB.makeFriend(personC);
+personC.makeFriend(personA);
 
-personA.startWith(personB);
+personA.startGame();

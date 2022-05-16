@@ -9,6 +9,7 @@ function main() {
   const personB = new Person("B", eventEmitter);
   const personC = new Person("C", eventEmitter);
 
+  const participants = [personA, personB, personC];
 
   const game = new Game(eventEmitter, participants);
 

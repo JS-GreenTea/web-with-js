@@ -1,15 +1,15 @@
 const EventEmitter = require("events");
 const _ = require("lodash");
 
-class Person extends EventEmitter {
-  constructor(name) {
-    super();
+class Person {
+  constructor(name, eventEmitter) {
     this.name = name;
+    this.eventEmitter = eventEmitter;
     this.checkMyTurn();
   }
 
   checkMyTurn() {
-    this.on(this.name, this.clapTime);
+    this.eventEmitter.on(this.name, this.clapTime.bind(this));
   }
 
   is369(currentNum) {

@@ -10,11 +10,20 @@ class Game {
     this.currentParticipantIndex = 0;
     this.receiveAnswer();
   }
-  start(startPerson) {
-    this.increaseCurrentNum();
-    this.setEventTarget();
-    this.announceTurn();
-    this.receiveAnswer();
+
+  start() {
+    while (this.isContinue) {
+      this.increaseCurrentNum();
+      this.currentParticipantIndex = this.currentPartipants;
+      this.setCurrentTurnParticipant();
+      this.announceTurn();
+    }
+
+    const winners = this.participants.filter((participant, index) => index !== this.currentParticipantIndex);
+  }
+
+  get currentPartipants() {
+    return (this.currentNum - 1) % this.participants.length;
   }
 
   increaseCurrentNum() {

@@ -1,5 +1,7 @@
 const EventEmitter = require("events");
 
+const isFail = require('../util/check.js');
+
 class Game {
   constructor(eventEmitter, participants) {
     this.eventEmitter = eventEmitter;
@@ -40,7 +42,7 @@ class Game {
   sayAnswer = (actionNumber) => {
     const currentParticipantName = this.participants[this.currentParticipantIndex].name;
     console.log(`${currentParticipantName}: ${actionNumber}`);
-    this.isContinue = !this.isFail(actionNumber);
+    this.isContinue = !isFail(actionNumber);
   }
 
   announceTurn() {

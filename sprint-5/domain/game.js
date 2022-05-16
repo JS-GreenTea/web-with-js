@@ -41,17 +41,13 @@ class Game {
   }
 
   receiveAnswer() {
-    this.on("receiveToA", this.sayAnswerA);
-    this.on("receiveToB", this.sayAnswerB);
+    this.participants.forEach(participant => {
+      this.eventEmitter.on("receiveTo" + participant.name, this.sayAnswer);
+    })
   }
 
-  // 순서가 바뀔 수 있음을 처리해야 함.
-  setEventTarget() {
-    if (this.currentNum % 2 === 0) {
-      this.eventTarget = "A";
-    } else {
-      this.eventTarget = "B";
-    }
+  setCurrentTurnParticipant() {
+    this.currentTurnParticipant = this.participants[this.currentParticipantIndex];
   }
 }
 

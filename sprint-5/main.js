@@ -9,8 +9,6 @@ function main() {
   const personB = new Person("B", eventEmitter);
   const personC = new Person("C", eventEmitter);
 
-  personA.checkMyTurn();
-  personB.checkMyTurn();
 
   const game = new Game(eventEmitter, participants);
 

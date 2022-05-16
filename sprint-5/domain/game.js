@@ -37,7 +37,7 @@ class Game {
   }
 
   announceTurn() {
-    this.emit(this.eventTarget, this.currentNum);
+    this.eventEmitter.emit(this.currentTurnParticipant.name, this.currentNum);
   }
 
   receiveAnswer() {

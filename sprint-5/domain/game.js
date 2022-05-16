@@ -1,10 +1,8 @@
 const EventEmitter = require("events");
 
-const Observable = require("./observable");
-
-class Game extends EventEmitter {
-  constructor() {
-    super();
+class Game {
+  constructor(eventEmitter, participants) {
+    this.eventEmitter = eventEmitter;
     this.currentNum = 0;
     this.eventTarget = "";
   }

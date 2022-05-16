@@ -1,6 +1,7 @@
+const EventEmitter = require("events");
+
 const Game = require("./domain/game");
 const Person = require("./domain/person");
-const EventEmitter = require("events");
 
 function main() {
   const eventEmitter = new EventEmitter();

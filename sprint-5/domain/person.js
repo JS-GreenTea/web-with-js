@@ -21,15 +21,9 @@ class Person {
     return _.random(0, 1);
   }
 
-  clapTime(currentNum) {
-    if (this.is369(currentNum)) {
-      if (this.isClap()) {
-        this.emit("receiveTo" + this.name, "짝");
-        return;
-      }
-      this.emit("receiveTo" + this.name, currentNum);
-      return;
-    }
+  clapTime (currentNum) {
+    const result = this.is369(currentNum) && this.isClap() ? "짝" : currentNum
+    this.eventEmitter.emit("receiveTo" + this.name, result);
   }
 }
 

@@ -5,6 +5,7 @@ class Person extends EventEmitter {
   constructor(name) {
     super();
     this.name = name;
+    this.checkMyTurn();
   }
 
   checkMyTurn() {

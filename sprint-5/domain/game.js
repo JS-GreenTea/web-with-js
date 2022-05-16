@@ -1,5 +1,3 @@
-const EventEmitter = require("events");
-
 const isFail = require('../util/check.js');
 
 class Game {

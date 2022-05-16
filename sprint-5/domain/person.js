@@ -1,4 +1,3 @@
-const EventEmitter = require("events");
 const _ = require("lodash");
 
 const isFail = require('../util/check.js');

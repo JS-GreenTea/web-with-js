@@ -20,6 +20,13 @@ class Game {
     }
 
     const winners = this.participants.filter((participant, index) => index !== this.currentParticipantIndex);
+
+    this.announceWinners(winners);
+  }
+
+  announceWinners(persons) {
+    const personsName = persons.map(person => person.name);
+    console.log(`${personsName.join(',')} (이)가 승리하였습니다.`);
   }
 
   get currentPartipants() {

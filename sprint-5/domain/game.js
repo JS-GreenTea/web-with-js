@@ -30,12 +30,10 @@ class Game {
     this.currentNum++;
   }
 
-  sayAnswerA(answer) {
-    console.log(`A: ${answer}`);
-  }
-
-  sayAnswerB(answer) {
-    console.log(`B: ${answer}`);
+  sayAnswer = (actionNumber) => {
+    const currentParticipantName = this.participants[this.currentParticipantIndex].name;
+    console.log(`${currentParticipantName}: ${actionNumber}`);
+    this.isContinue = !this.isFail(actionNumber);
   }
 
   announceTurn() {

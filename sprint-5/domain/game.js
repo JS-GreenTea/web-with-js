@@ -4,7 +4,11 @@ class Game {
   constructor(eventEmitter, participants) {
     this.eventEmitter = eventEmitter;
     this.currentNum = 0;
-    this.eventTarget = "";
+    this.isContinue = true;
+    this.participants = participants;
+    this.currentTurnParticipant = "";
+    this.currentParticipantIndex = 0;
+    this.receiveAnswer();
   }
   start(startPerson) {
     this.increaseCurrentNum();
